@@ -19,10 +19,10 @@ before_install:
 - sfdx plugins --core
 ##- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key
 ##  --username $USERNAME --setdefaultdevhubusername -a HubOrg
-- sfdx force:auth:jwt:grant --clientid 3MVG9A2kN3Bn17huspSxZnB5UkIErseRXO901pZQCtDuvhVhAlPGqCuDaT25etgXCNdUoVWmgL3BFIiUmsHQt --jwtkeyfile assets/server.key --username 180crm@gmail.com --setdefaultdevhubusername -a dev
+- sfdx force:auth:jwt:grant --clientid 3MVG9A2kN3Bn17huspSxZnB5UkIErseRXO901pZQCtDuvhVhAlPGqCuDaT25etgXCNdUoVWmgL3BFIiUmsHQt --jwtkeyfile assets/server.key --username 180crm@gmail.com --setdefaultdevhubusername -a HubOrg
 
 script:
-- sfdx force:org:create -v dev -s -f config/project-scratch-def.json -a ciorg --wait 2
+- sfdx force:org:create -v HubOrg -s -f config/project-scratch-def.json -a ciorg --wait 2
 - sfdx force:org:display -u ciorg
 - sfdx force:source:push -u ciorg
 - sfdx force:apex:test:run -u ciorg --wait 10
